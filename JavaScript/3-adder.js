@@ -38,10 +38,10 @@ class Chain {
 const sum = (a, b) => a + b;
 
 const chain = new Chain()
-  .add(new Adder(Array, array => array.reduce(sum)))
-  .add(new Adder(Set, set => [...set].reduce(sum)))
-  .add(new Adder(Uint8Array, u8a => Array.from(u8a).reduce(sum)))
-  .add(new Adder(Object, obj => `Not supported ${obj.constructor.name}`));
+  .add(new Adder(Array, (array) => array.reduce(sum)))
+  .add(new Adder(Set, (set) => [...set].reduce(sum)))
+  .add(new Adder(Uint8Array, (u8a) => Array.from(u8a).reduce(sum)))
+  .add(new Adder(Object, (obj) => `Not supported ${obj.constructor.name}`));
 
 const sum1 = chain.process([1, 2, 3]);
 console.dir({ sum1 });
