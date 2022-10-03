@@ -1,6 +1,5 @@
 'use strict';
 
-
 class Handler {
   constructor(fn) {
     this.fn = fn;
