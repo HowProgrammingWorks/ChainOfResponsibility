@@ -23,11 +23,12 @@ class Sender {
 
   process(value) {
     let current = this.first;
-    const step = () => current.fn(value, () => {
-      current = current.next;
-      if (current) return step();
-      throw new Error('No handler detected');
-    });
+    const step = () =>
+      current.fn(value, () => {
+        current = current.next;
+        if (current) return step();
+        throw new Error('No handler detected');
+      });
     return step().toString();
   }
 }

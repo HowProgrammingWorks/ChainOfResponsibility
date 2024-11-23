@@ -48,20 +48,19 @@ class Sender {
 
   process(value) {
     let current = this.first;
-    const step = () => current.method(value, () => {
-      current = current.next;
-      if (current) return step();
-      throw new Error('No handler detected');
-    });
+    const step = () =>
+      current.method(value, () => {
+        current = current.next;
+        if (current) return step();
+        throw new Error('No handler detected');
+      });
     return step().toString();
   }
 }
 
 // Usage
 
-const sender = new Sender()
-  .add(new NumberHandler())
-  .add(new ArrayHandler());
+const sender = new Sender().add(new NumberHandler()).add(new ArrayHandler());
 
 {
   const result = sender.process(100);
